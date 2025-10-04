@@ -1,6 +1,6 @@
 [build]
   # Directory containing the source code
-  base = "/"
+  base = "convoform"
   
   # Command to build your site
   command = "npm run build"
