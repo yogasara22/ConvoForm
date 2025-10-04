@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConvoForm Embed Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .demo-section {
+            margin-top: 30px;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .form-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ConvoForm Embed Demo</h1>
+        
+        <div class="instructions">
+            <h3>How to Embed ConvoForm in Your Website</h3>
+            <p>Follow these simple steps to embed the ConvoForm in your website:</p>
+            <ol>
+                <li>Include the ConvoForm CSS and JavaScript files from the <code>dist</code> folder</li>
+                <li>Create a container element where you want the form to appear</li>
+                <li>Initialize the form with your configuration</li>
+            </ol>
+        </div>
+
+        <div class="demo-section">
+            <h2>Live Demo</h2>
+            <p>Below is a working example of ConvoForm embedded in this HTML page:</p>
+            
+            <!-- ConvoForm Container -->
+            <div id="convoform-container" class="form-container"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Implementation Code</h2>
+            <p>Here's the code used to embed the form above:</p>
+            <pre><code>&lt;!-- Include ConvoForm CSS and JS --&gt;
+&lt;link rel="stylesheet" href="./dist/assets/index-p7f-vyxE.css"&gt;
+&lt;script src="./dist/assets/index-xWriA2Qd.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Create container for the form --&gt;
+&lt;div id="convoform-container"&gt;&lt;/div&gt;
+
+&lt;!-- Initialize ConvoForm --&gt;
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait for ConvoForm to be loaded
+    setTimeout(function() {
+      if (window.ConvoForm) {
+        // Initialize with configuration
+        window.ConvoForm.init({
+          targetElement: '#convoform-container',
+          configUrl: './demo-config.json',
+          onComplete: function(data) {
+            console.log('Form completed with data:', data);
+            // You can send this data to your server or process it as needed
+          }
+        });
+      }
+    }, 500);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+    </div>
+
+    <!-- Include ConvoForm CSS and JS -->
+    <link rel="stylesheet" href="./dist/assets/index-p7f-vyxE.css">
+    <script src="./dist/assets/index-xWriA2Qd.js" defer></script>
+
+    <!-- Initialize ConvoForm -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for ConvoForm to be loaded
+            setTimeout(function() {
+                if (window.ConvoForm) {
+                    // Initialize with configuration
+                    window.ConvoForm.init({
+                        targetElement: '#convoform-container',
+                        configUrl: './public/demo-config.json',
+                        onComplete: function(data) {
+                            console.log('Form completed with data:', data);
+                            // You can send this data to your server or process it as needed
+                        }
+                    });
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

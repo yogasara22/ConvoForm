@@ -1,0 +1,79 @@
+{
+  "title": "Contact Us",
+  "description": "Please fill out the following form to contact our team.",
+  "botAvatar": "https://i.pravatar.cc/150?img=3",
+  "userAvatar": "https://i.pravatar.cc/150?img=7",
+  "steps": [
+    {
+      "id": "name",
+      "text": "Hello! What's your name?",
+      "type": "text",
+      "placeholder": "Enter your full name",
+      "required": true
+    },
+    {
+      "id": "email",
+      "text": "Nice to meet you! May I know your email address?",
+      "type": "email",
+      "placeholder": "example@email.com",
+      "required": true
+    },
+    {
+      "id": "phone",
+      "text": "What's your contact phone number?",
+      "type": "text",
+      "placeholder": "Enter your phone number",
+      "required": false
+    },
+    {
+      "id": "service",
+      "text": "Which service are you interested in?",
+      "type": "select",
+      "options": [
+        "Website Development",
+        "Mobile App Development",
+        "UI/UX Design",
+        "Digital Marketing",
+        "Other"
+      ],
+      "required": true
+    },
+    {
+      "id": "budget",
+      "text": "What's your budget range for this project?",
+      "type": "select",
+      "options": [
+        "< $500",
+        "$500 - $1,000",
+        "$1,000 - $2,500",
+        "$2,500 - $5,000",
+        "> $5,000"
+      ],
+      "required": true
+    },
+    {
+      "id": "timeline",
+      "text": "When would you like this project to be completed?",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "message",
+      "text": "Tell me more about your project requirements",
+      "type": "textarea",
+      "placeholder": "Describe your project needs in detail",
+      "required": true
+    },
+    {
+      "id": "attachment",
+      "text": "Do you have any documents or references you'd like to share?",
+      "type": "file",
+      "required": false
+    }
+  ],
+  "emailConfig": {
+    "serviceId": "your_emailjs_service_id",
+    "templateId": "your_emailjs_template_id",
+    "userId": "your_emailjs_user_id"
+  }
+}

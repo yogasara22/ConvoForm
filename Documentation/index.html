@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConvoForm Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4a6cf7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #4a6cf7;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #4a6cf7;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .demo-image {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ConvoForm Documentation</h1>
+        <p>A conversational form component for React applications</p>
+    </header>
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usage">Usage</a>
+                <ul>
+                    <li><a href="#basic-usage">Basic Usage</a></li>
+                    <li><a href="#configuration">Configuration</a></li>
+                    <li><a href="#input-types">Input Types</a></li>
+                </ul>
+            </li>
+            <li><a href="#embedding">Embedding in HTML</a>
+                <ul>
+                    <li><a href="#embed-steps">Step-by-Step Guide</a></li>
+                    <li><a href="#embed-options">Embedding Options</a></li>
+                </ul>
+            </li>
+            <li><a href="#customization">Customization</a></li>
+            <li><a href="#data-export">Data Export</a></li>
+            <li><a href="#emailjs">EmailJS Integration</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </div>
+
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>ConvoForm is a modern, conversational form component for React applications that transforms traditional forms into engaging chat-like conversations. It provides a more interactive and user-friendly way to collect information from your users.</p>
+        
+        <p>Key features include:</p>
+        <ul>
+            <li>Chat-like interface for form inputs</li>
+            <li>Support for various input types (text, email, number, select, etc.)</li>
+            <li>Customizable appearance and behavior</li>
+            <li>Data export capabilities</li>
+            <li>EmailJS integration for sending form data</li>
+            <li>Easy embedding in any HTML page</li>
+        </ul>
+    </section>
+
+    <section id="installation">
+        <h2>Installation</h2>
+        
+        <h3>Using the Pre-built Version</h3>
+        <p>The easiest way to use ConvoForm is to include the pre-built files in your HTML:</p>
+        <pre>&lt;link rel="stylesheet" href="path/to/convoform/dist/assets/index-[hash].css"&gt;
+&lt;script src="path/to/convoform/dist/assets/index-[hash].js" defer&gt;&lt;/script&gt;</pre>
+        
+        <h3>Using the Source Code</h3>
+        <p>If you want to customize or integrate ConvoForm into your React project:</p>
+        <ol>
+            <li>Copy the source code into your project</li>
+            <li>Install dependencies:
+                <pre>npm install</pre>
+            </li>
+            <li>Start the development server:
+                <pre>npm run dev</pre>
+            </li>
+            <li>Build for production:
+                <pre>npm run build</pre>
+            </li>
+        </ol>
+    </section>
+
+    <section id="usage">
+        <h2>Usage</h2>
+        
+        <section id="basic-usage">
+            <h3>Basic Usage</h3>
+            <p>To use ConvoForm in your React application:</p>
+            <pre>import FormEngine from './components/FormEngine';
+
+function App() {
+  return (
+    &lt;div className="App"&gt;
+      &lt;FormEngine 
+        configUrl="path/to/config.json"
+        onComplete={(data) => console.log(data)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+        </section>
+        
+        <section id="configuration">
+            <h3>Configuration</h3>
+            <p>ConvoForm is configured using a JSON file. Here's an example configuration:</p>
+            <pre>{
+  "botName": "FormBot",
+  "botAvatar": "https://example.com/bot-avatar.png",
+  "userAvatar": "https://example.com/user-avatar.png",
+  "welcomeMessage": "Hello! I'm here to help you fill out this form.",
+  "questions": [
+    {
+      "id": "name",
+      "question": "What is your name?",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "email",
+      "question": "What is your email address?",
+      "type": "email",
+      "required": true
+    },
+    {
+      "id": "age",
+      "question": "How old are you?",
+      "type": "number",
+      "required": true
+    }
+  ],
+  "thankYouMessage": "Thank you for completing the form!",
+  "emailJS": {
+    "serviceId": "your_service_id",
+    "templateId": "your_template_id",
+    "publicKey": "your_public_key"
+  }
+}</pre>
+        </section>
+        
+        <section id="input-types">
+            <h3>Input Types</h3>
+            <p>ConvoForm supports the following input types:</p>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>text</td>
+                    <td>Single-line text input</td>
+                    <td><code>"type": "text"</code></td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td>Email address input with validation</td>
+                    <td><code>"type": "email"</code></td>
+                </tr>
+                <tr>
+                    <td>number</td>
+                    <td>Numeric input</td>
+                    <td><code>"type": "number"</code></td>
+                </tr>
+                <tr>
+                    <td>select</td>
+                    <td>Dropdown selection</td>
+                    <td><code>"type": "select", "options": ["Option 1", "Option 2"]</code></td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>Date picker</td>
+                    <td><code>"type": "date"</code></td>
+                </tr>
+                <tr>
+                    <td>tel</td>
+                    <td>Telephone number input</td>
+                    <td><code>"type": "tel"</code></td>
+                </tr>
+            </table>
+        </section>
+    </section>
+
+    <section id="embedding">
+        <h2>Embedding in HTML</h2>
+        
+        <section id="embed-steps">
+            <h3>Step-by-Step Guide</h3>
+            <p>Follow these steps to embed ConvoForm in any HTML page:</p>
+            <ol>
+                <li>Include the ConvoForm CSS and JavaScript files:
+                    <pre>&lt;link rel="stylesheet" href="path/to/convoform/dist/assets/index-[hash].css"&gt;
+&lt;script src="path/to/convoform/dist/assets/index-[hash].js" defer&gt;&lt;/script&gt;</pre>
+                </li>
+                <li>Create a container element where you want the form to appear:
+                    <pre>&lt;div id="convoform-container"&gt;&lt;/div&gt;</pre>
+                </li>
+                <li>Initialize the form with your configuration:
+                    <pre>&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait for ConvoForm to be loaded
+    setTimeout(function() {
+      if (window.ConvoForm) {
+        // Initialize with configuration
+        window.ConvoForm.init({
+          targetElement: '#convoform-container',
+          configUrl: 'path/to/config.json',
+          onComplete: function(data) {
+            console.log('Form completed with data:', data);
+            // You can send this data to your server or process it as needed
+          }
+        });
+      }
+    }, 500);
+  });
+&lt;/script&gt;</pre>
+                </li>
+            </ol>
+            
+            <div class="note">
+                <p><strong>Note:</strong> You can find a complete working example in the <code>Demo/demo-embed.html</code> file included in this package.</p>
+            </div>
+        </section>
+        
+        <section id="embed-options">
+            <h3>Embedding Options</h3>
+            <p>The <code>ConvoForm.init()</code> function accepts the following options:</p>
+            <table>
+                <tr>
+                    <th>Option</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                </tr>
+                <tr>
+                    <td>targetElement</td>
+                    <td>String</td>
+                    <td>CSS selector for the container element</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>configUrl</td>
+                    <td>String</td>
+                    <td>URL to the configuration JSON file</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>onComplete</td>
+                    <td>Function</td>
+                    <td>Callback function that receives the form data</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>theme</td>
+                    <td>Object</td>
+                    <td>Custom theme options</td>
+                    <td>No</td>
+                </tr>
+            </table>
+        </section>
+    </section>
+
+    <section id="customization">
+        <h2>Customization</h2>
+        <p>ConvoForm can be customized in several ways:</p>
+        
+        <h3>Appearance</h3>
+        <p>You can customize the appearance by modifying the CSS or by providing a custom theme object when initializing ConvoForm:</p>
+        <pre>window.ConvoForm.init({
+  targetElement: '#convoform-container',
+  configUrl: 'path/to/config.json',
+  theme: {
+    primaryColor: '#4a6cf7',
+    backgroundColor: '#f5f5f5',
+    fontFamily: 'Arial, sans-serif'
+  }
+});</pre>
+        
+        <h3>Behavior</h3>
+        <p>You can customize the behavior by modifying the configuration JSON file. For example, you can change the welcome message, add more questions, or modify the thank you message.</p>
+    </section>
+
+    <section id="data-export">
+        <h2>Data Export</h2>
+        <p>ConvoForm provides several ways to export the collected data:</p>
+        
+        <h3>JavaScript Callback</h3>
+        <p>You can access the form data through the <code>onComplete</code> callback:</p>
+        <pre>window.ConvoForm.init({
+  targetElement: '#convoform-container',
+  configUrl: 'path/to/config.json',
+  onComplete: function(data) {
+    console.log('Form completed with data:', data);
+    // Send data to your server or process it as needed
+  }
+});</pre>
+        
+        <h3>EmailJS Integration</h3>
+        <p>ConvoForm can automatically send the form data to your email using EmailJS. See the <a href="#emailjs">EmailJS Integration</a> section for more details.</p>
+    </section>
+
+    <section id="emailjs">
+        <h2>EmailJS Integration</h2>
+        <p>ConvoForm integrates with EmailJS to send form data to your email. To use this feature:</p>
+        
+        <div class="note">
+            <p><strong>Important:</strong> By default, form results are logged in the console. To enable email notifications, integrate your own EmailJS account as described below.</p>
+        </div>
+        
+        <ol>
+            <li>Sign up for an account at <a href="https://www.emailjs.com/" target="_blank">EmailJS</a></li>
+            <li>Create a service and template</li>
+            <li>Add your EmailJS configuration to your ConvoForm configuration file:
+                <pre>"emailJS": {
+  "serviceId": "your_service_id",
+  "templateId": "your_template_id",
+  "publicKey": "your_public_key"
+}</pre>
+            </li>
+        </ol>
+        
+        <div class="warning">
+            <p><strong>Warning:</strong> Your EmailJS public key will be visible in the configuration file. Make sure to set up proper security measures on the EmailJS side to prevent abuse.</p>
+        </div>
+    </section>
+
+    <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        
+        <h3>Common Issues</h3>
+        
+        <h4>ConvoForm is not appearing on the page</h4>
+        <p>Check the following:</p>
+        <ul>
+            <li>Make sure the CSS and JavaScript files are correctly included</li>
+            <li>Check that the container element exists in the DOM</li>
+            <li>Check the browser console for any errors</li>
+            <li>Make sure the configuration file is accessible</li>
+        </ul>
+        
+        <h4>Form data is not being sent</h4>
+        <p>Check the following:</p>
+        <ul>
+            <li>Make sure the EmailJS configuration is correct</li>
+            <li>Check the browser console for any errors</li>
+            <li>Verify that the form is being completed correctly</li>
+        </ul>
+        
+        <h3>Support</h3>
+        <p>If you encounter any issues or have questions, please contact us at info@layangdigital.com.</p>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+        <p>ConvoForm &copy; 2025. All rights reserved.</p>
+    </footer>
+</body>
+</html>
